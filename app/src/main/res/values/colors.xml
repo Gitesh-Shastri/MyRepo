@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#bb3335</color>
+    <color name="colorPrimaryDark">#bb3335</color>
+    <color name="colorAccent">#D81B60</color>
+    
+    <color name="dividerColor">#80CBC4</color>
+    <color name="list_item_title">#AAAAAA</color>
+    <color name="list_group_title">#808080</color>
+
+    <color name="non_active_tab">#777575</color>
+    <color name="ink_color">#005EFF</color>
+
+    <color name="call_to_action">#1989cd</color>
+    <color name="primary_link">#1989CD</color>
+
+</resources>
