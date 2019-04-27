@@ -22,16 +22,13 @@
 
     </LinearLayout>
 
-    <ExpandableListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/navList"
         android:layout_gravity="left|start"
         android:background="@android:color/white"
-        android:divider="@color/dividerColor"
-        android:dividerHeight="0.5dp"
-        android:indicatorLeft="?android:attr/expandableListPreferredChildIndicatorLeft"
         android:layout_width="235dp"
         android:layout_height="match_parent">
 
-    </ExpandableListView>
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.v4.widget.DrawerLayout>

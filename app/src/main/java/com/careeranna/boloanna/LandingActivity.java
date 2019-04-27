@@ -1,5 +1,6 @@
 package com.careeranna.boloanna;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -9,36 +10,35 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
-
 import com.careeranna.boloanna.Adapter.CustomNavigationListAdapter;
 import com.careeranna.boloanna.fragements.NewsFragment;
+import com.careeranna.boloanna.fragements.VideosFragment;
+import com.careeranna.boloanna.models.Category;
+import com.careeranna.boloanna.models.NavItems;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends AppCompatActivity implements
+        CustomNavigationListAdapter.OnItemClickListener {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private String[] items;
 
-    private ExpandableListView expandableListView;
+    private RecyclerView expandableListView;
     private CustomNavigationListAdapter navAdapter;
-    private List<String> listTitle;
-    private Map<String, List<String>> listChild;
+
+    ArrayList<NavItems> navItems;
 
     FragmentTransaction fragmentTransaction;
     FragmentManager fragmentManager;
 
     NewsFragment newsFragment;
+    VideosFragment videosFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +46,7 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        expandableListView = (ExpandableListView) findViewById(R.id.navList);
-
-        initItems();
+        expandableListView = (RecyclerView) findViewById(R.id.navList);
 
         genData();
 
@@ -66,11 +64,12 @@ public class LandingActivity extends AppCompatActivity {
         }
 
         newsFragment = new NewsFragment();
+        videosFragment = new VideosFragment();
 
         fragmentManager = getSupportFragmentManager();
 
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container, newsFragment);
+        fragmentTransaction.replace(R.id.container, videosFragment);
         fragmentTransaction.commit();
 
     }
@@ -93,36 +92,6 @@ public class LandingActivity extends AppCompatActivity {
 
     private void addDrawersItem() {
 
-        navAdapter = new CustomNavigationListAdapter(this, listTitle, listChild);
-        expandableListView.setAdapter(navAdapter);
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if(getSupportActionBar() != null) {
-                    getSupportActionBar().setTitle(listTitle.get(groupPosition).toString());
-                }
-            }
-        });
-
-        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-
-            }
-        });
-
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        LandingActivity.this,
-                        listChild.get(listTitle.get(groupPosition)).get(childPosition).toString(),
-                        Toast.LENGTH_SHORT)
-                        .show();
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return false;
-            }
-        });
     }
 
     private void setUpDrawer() {
@@ -146,20 +115,24 @@ public class LandingActivity extends AppCompatActivity {
 
     private void genData() {
 
-        List<String> title = Arrays.asList("QAndA", "Videos", "News", "ChangeLanguage", "Profile");
-        List<String> childrenItem = Arrays.asList("Cat1", "Cat2", "Cat3");
+        navItems = new ArrayList<>();
 
-        listChild = new TreeMap<>();
-        listChild.put(title.get(0), childrenItem);
-        listChild.put(title.get(1), childrenItem);
-        listChild.put(title.get(2), childrenItem);
+        ArrayList<Category> categories = new ArrayList<>();
+        categories.add(new Category("Politics"));
+        categories.add(new Category("Economy"));
 
-        listTitle = new ArrayList<>(listChild.keySet());
-    }
+        navItems.add(new NavItems("Videos", categories));
 
-    private void initItems() {
+        navItems.add(new NavItems("News", categories));
+        navItems.add(new NavItems("Change Language"));
+        navItems.add(new NavItems("Profile"));
+        navItems.add(new NavItems("Sign Out"));
 
-        items = new String[]{"QAndA", "Videos", "News", "ChangeLanguage", "Profile"};
+
+        navAdapter = new CustomNavigationListAdapter(LandingActivity.this, navItems);
+        expandableListView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        expandableListView.setAdapter(navAdapter);
+        navAdapter.setOnItemClicklistener(this);
 
     }
 
@@ -172,12 +145,77 @@ public class LandingActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
-
         if(mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void changeTitle(int child_position, int parent_position) {
+
+        switch (parent_position) {
+
+            case 0:
+
+                videosFragment = new VideosFragment();
+
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, videosFragment).commit();
+
+                break;
+
+            case 1:
+
+                newsFragment = new NewsFragment();
+
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, newsFragment).commit();
+
+                break;
+
+
+        }
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(navItems.get(parent_position).getCategories().get(child_position).getName());
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    @Override
+
+    public void onNavItemSelected(int position) {
+
+        switch (position) {
+
+            case 0:
+            case 1:
+                break;
+
+            case 2:
+
+                startActivity(new Intent(LandingActivity.this, ChooseLanguage.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                break;
+
+            case 3:
+
+                startActivity(new Intent(LandingActivity.this, ProfileActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                break;
+
+            case 4:
+
+                startActivity(new Intent(LandingActivity.this, SignInActivity.class));
+                finish();
+
+                break;
+
+        }
+
     }
 }

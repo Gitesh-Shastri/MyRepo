@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="10dp"
+    android:background="#fff">
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="20dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         app:cardCornerRadius="20dip"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/user_pic"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_person_blue_24dp" />
 
     </android.support.v7.widget.CardView>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:gravity="center_vertical"
         android:id="@+id/user_name"
         android:layout_marginStart="8dp"
@@ -35,7 +47,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:id="@+id/follow_user"
         android:layout_marginRight="5dp"
         android:text="@string/follow"
@@ -48,7 +60,7 @@
         />
     <Button
         android:layout_width="30dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:id="@+id/drop_down_of_follow"
         android:paddingLeft="3dp"
         android:drawableLeft="@drawable/ic_keyboard_arrow_down_white_24dp"
@@ -60,4 +72,264 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <TextView
+        android:text="@string/specialised_courses_label"
+        android:layout_width="match_parent"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="5dp"
+        android:id="@+id/video_title"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Posted 2 hours ago"
+        android:layout_width="match_parent"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/video_posted"
+        app:layout_constraintTop_toBottomOf="@id/video_title"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/video_card_view"
+        app:cardCornerRadius="20dip"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_posted" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/image_video_preview"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:elevation="10dp"
+                android:background="@drawable/gradient_image"
+                />
+
+            <ImageView
+                android:elevation="20dp"
+                android:layout_width="50dp"
+                android:src="@drawable/play_button"
+                android:layout_centerInParent="true"
+                android:layout_height="50dp"
+                />
+
+            <android.support.constraint.ConstraintLayout
+                android:elevation="20dp"
+                android:background="#343434"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/course_video_views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_remove_red_eye_black_24dp"
+                    android:drawablePadding="5dp"
+                    android:elevation="20dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="6dp"
+                    android:paddingBottom="5dp"
+                    android:text="16,0614 Views"
+                    android:textColor="#fff"
+                    android:textSize="15sp" />
+
+                <TextView
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="7:39"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:elevation="20dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:id="@+id/course_video_duration"
+                    />
+            </android.support.constraint.ConstraintLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:id="@+id/like_and_share_layout"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/video_card_view"
+        >
+
+        <TextView
+            android:text="2,745"
+            android:gravity="center_vertical"
+            android:id="@+id/course_videos_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_heart"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/black"
+            />
+
+        <TextView
+            android:id="@+id/share"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Share"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/black"
+            android:drawableLeft="@drawable/ic_share"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/comment_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/like_and_share_layout">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView_first_comment"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="20dip">
+
+            <ImageView
+                android:id="@+id/user_pic_first_comment"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_person_blue_24dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:id="@+id/user_name_first_comment"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/gitesh_shastri"
+            android:textColor="@android:color/black"
+            android:layout_toRightOf="@id/cardView_first_comment"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:id="@+id/posted_on_first_comment"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/hour_ago"
+            android:layout_toRightOf="@id/user_name_first_comment"
+            />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:id="@+id/comment_given_by_user"
+            android:textColor="@android:color/black"
+            android:layout_toLeftOf="@id/like_user_comment"
+            android:text="@string/hostel_facility_is_not_available_for_its_students_hostel_facility_is_not_available_read_more"
+            android:layout_below="@id/user_name_first_comment"
+            />
+
+        <Button
+            android:paddingLeft="10dp"
+            android:drawableLeft="@drawable/ic_blank_like_heart"
+            android:layout_width="30dp"
+            android:id="@+id/like_user_comment"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/user_name_first_comment"
+            />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/view_all_comment"
+            android:textSize="12sp"
+            android:text="@string/view_all_36_comments"
+            android:layout_below="@id/comment_given_by_user"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/divider"
+            android:layout_marginTop="5dp"
+            android:background="#F5F0F0"
+            android:layout_below="@id/view_all_comment"
+            />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView_add_comment"
+            android:layout_width="35dp"
+            android:layout_below="@id/divider"
+            android:layout_marginTop="5dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="20dip">
+
+            <ImageView
+                android:id="@+id/user_pic_add_comment"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_person_blue_24dp" />
+
+        </android.support.v7.widget.CardView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="8dp"
+            android:layout_below="@id/divider"
+            android:layout_alignBottom="@+id/cardView_add_comment"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/cardView_add_comment"
+            android:hint="@string/add_a_comment"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

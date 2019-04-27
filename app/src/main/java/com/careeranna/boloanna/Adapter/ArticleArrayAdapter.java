@@ -14,10 +14,7 @@ import com.careeranna.boloanna.Helper.Utils;
 import com.careeranna.boloanna.R;
 import com.careeranna.boloanna.models.Article;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class ArticleArrayAdapter extends RecyclerView.Adapter<ArticleArrayAdapter.ViewHolder>{
     public static final String TAG = "ArticleArrayAdapter";

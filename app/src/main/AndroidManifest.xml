@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.careeranna.boloanna">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.READ_SMS"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.RECEIVE_SMS"
+        tools:node="remove" />
 
     <application
         android:allowBackup="true"
@@ -11,17 +18,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ParticularArticle"></activity>
+        <activity android:name=".ParticularVideoActivity" />
+        <activity
+            android:name=".ExploreActivity"
+            android:parentActivityName=".OnBoardingActivity" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="My Profile"
+            android:parentActivityName=".LandingActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name=".OnBoardingActivity" />
+        <activity
+            android:name=".ParticularArticle"
+            android:parentActivityName=".LandingActivity" />
         <activity android:name=".ChooseLanguage" />
-        <activity android:name=".SignInActivity" />
+        <activity
+            android:name=".SignInActivity"
+            android:parentActivityName=".OnBoardingActivity" />
         <activity android:name=".LandingActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="JW_LICENSE_KEY"
+            android:value="PBqloWZ7+cg1wh3h3P0dnaBB2Lgrqn/GgQUsBG6Rb+bq/TiW" />
+
     </application>
 
 </manifest>

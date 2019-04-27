@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="gotolanding">GoToLanding</string>
+    <string name="gotolanding">Go To Landing</string>
     <string name="log_in">Log In</string>
     <string name="go_to_sign_up">Go To Sign Up</string>
     <string name="sign_up">Sign Up</string>
@@ -28,4 +28,21 @@
     <string name="read_more">read more ...</string>
     <string name="gitesh_shastri">Gitesh Shastri</string>
     <string name="follow">Follow</string>
+    <string name="specialised_courses_label">Specialised Courses</string>
+    <string name="hour_ago">1 hour ago</string>
+    <string name="hostel_facility_is_not_available_for_its_students_hostel_facility_is_not_available_read_more">Hostel facility is not available for its students. Hostel facility is not available read more..</string>
+    <string name="view_all_36_comments">view all 36 comments</string>
+    <string name="add_a_comment">Add a Comment ...</string>
+    <string name="bolo_anna">Bolo Anna</string>
+    <string name="something_went_wrong">Something Went Wrong.Please Try Again ...</string>
+    <string name="india_ka_naya_andaz">India Ka Naya Andaz</string>
+    <string name="explore">Explore</string>
+    <string name="sign_in">Sign In</string>
+    <string name="_10k">10K</string>
+    <string name="followers">followers</string>
+    <string name="_2k">2K</string>
+    <string name="following">following</string>
+    <string name="giteshshastri96_gmail_com">giteshshastri96@gmail.com</string>
+    <string name="_7_83_000_users">7,83,000+ Users</string>
+    <string name="largest_platform_to_learn_and_share_languages_in_indian_languages">Largest Platform To Learn And Share Languages in Indian Languages.</string>
 </resources>

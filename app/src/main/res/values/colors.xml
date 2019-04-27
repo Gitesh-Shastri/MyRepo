@@ -3,6 +3,8 @@
     <color name="colorPrimary">#bb3335</color>
     <color name="colorPrimaryDark">#bb3335</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="official_color">#CB3B3D</color>
     
     <color name="dividerColor">#80CBC4</color>
     <color name="list_item_title">#AAAAAA</color>

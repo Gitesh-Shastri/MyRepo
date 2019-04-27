@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/sign_up_and_in_layout"
     android:background="#FFFFFF"
     tools:context=".SignInActivity">
 
@@ -49,6 +50,7 @@
             android:id="@+id/input_layout_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:errorEnabled="true"
             android:layout_marginTop="8dp">
 
             <EditText
@@ -68,6 +70,7 @@
             android:id="@+id/input_layout_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:errorEnabled="true"
             android:layout_marginTop="8dp"
             app:passwordToggleEnabled="true">
 
@@ -167,6 +170,7 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:padding="16dp"
+        android:layout_marginTop="10dp"
         android:visibility="gone">
 
         <android.support.design.widget.TextInputLayout
